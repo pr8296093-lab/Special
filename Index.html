@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Emaan ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #ff9a9e, #fecfef, #ffdde1, #ffd1dc);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    color: rgba(255, 105, 180, 0.6);
+    animation: floatHeart linear infinite;
+    filter: drop-shadow(0 0 6px rgba(255, 105, 180, 0.6));
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(100vh) translateX(0) scale(0.8);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    50% { transform: translateX(30px); }
+    100% {
+        transform: translateY(-120vh) translateX(-30px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    padding: 40px;
+}
+
+.main-title {
+    font-size: 3.8em;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255,255,255,0.6);
+    margin-bottom: 30px;
+    animation: fadeDown 1.5s ease;
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message-box {
+    background: rgba(255,255,255,0.95);
+    border-radius: 30px;
+    padding: 60px 50px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.15);
+    border: 2px solid rgba(255,182,193,0.5);
+    animation: fadeUp 2s ease 0.4s both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message {
+    font-size: 1.9em;
+    line-height: 1.8;
+    color: #d63384;
+    font-style: italic;
+    margin: 20px 0;
+    animation: glow 3s infinite;
+}
+
+@keyframes glow {
+    0%,100% { text-shadow: 0 0 10px rgba(214,51,132,0.3); }
+    50% { text-shadow: 0 0 22px rgba(214,51,132,0.6); }
+}
+
+.signature {
+    margin-top: 40px;
+    font-size: 1.4em;
+    color: #ff6b9d;
+    font-style: italic;
+    animation: fadeIn 2.5s ease 1s both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Sparkles */
+.sparkle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: sparkle 1.5s ease-out forwards;
+    box-shadow: 0 0 10px white;
+}
+
+@keyframes sparkle {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(15); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="container">
+    <h1 class="main-title">Emaan</h1>
+
+    <div class="message-box">
+        <p class="message">Tumhi se dil dharakta hai…</p>
+        <p class="message">Tum ho to sab hai…</p>
+        <p class="message">Tum hi se mera har din hai…</p>
+        <p class="signature">You are the most precious to me ❤️</p>
+    </div>
+</div>
+
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 25 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 10 + 10 + "s";
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(() => heart.remove(), 20000);
+}
+
+setInterval(createHeart, 700);
+
+document.addEventListener("mousemove", e => {
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.style.left = e.pageX + "px";
+    s.style.top = e.pageY + "px";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1500);
+});
+</script>
+
+</body>
+</html>
